@@ -5,6 +5,7 @@ const Backpack = require('./backpackClass.js');
 let myBackpack = new Backpack("Jim", "tent");
 myBackpack.readNameTag();
 
+// Now lets play around with the backpack
 myBackpack.addItemToMainCompartment("jacket");
 myBackpack.lookInMainCompartment();
 myBackpack.removeItemFromMainCompartment("stove");
