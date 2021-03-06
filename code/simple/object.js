@@ -2,7 +2,7 @@
 const Backpack = require('./backpackClass.js');
 
 // Instantiate an instance of backpack for me and make sure its mine
-let myBackpack = new Backpack("George", "tent");
+let myBackpack = new Backpack("Jim", "tent");
 myBackpack.readNameTag();
 
 myBackpack.addItemToMainCompartment("jacket");
