@@ -6,9 +6,9 @@ If you are a beginning developer looking to further your skills or advance your 
 
 [What is the difference between a class and an object?](https://jimbledsoe.github.io/Learning-computer-science/content/class-v-object)
 
-[What is an API, and how is it different from a library?](https://jimbledsoe.github.io/Learning-computer-science/content/class-v-object.md)
+[What is an API, and how is it different from a library?](https://jimbledsoe.github.io/Learning-computer-science/content/class-v-object)
 
-[How should a beginner approach the Single Responsibility Principle?](https://jimbledsoe.github.io/Learning-computer-science/content/class-v-object.md)
+[How should a beginner approach the Single Responsibility Principle?](https://jimbledsoe.github.io/Learning-computer-science/content/class-v-object)
 
 ## Suggest a New Topic
 
