@@ -10,67 +10,75 @@ A class and an object represent the same concepts, but the class is the definiti
 
 Creating an object from a class is where the fun begins.  You may create as many objects from the same class as you need to do actual useful work.  Some or all of those properties may be set when you instantiate (create) the object from your class via its constructor (a special type of method), or you may be able to set more properties later by calling some of its methods (setters).  You will also be able to have your object perform certain functionality by calling its methods which could let you get information back out of the object (getters).  This may be a lot to take in at first, so let's proceed with a real-world example.
 
-## Create a Usable Class - a Backpack
+## Design a Useful Class - a Backpack
 
-Let's start off by creating a simple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with other items you bought at the same time so you can go on your grand adventure.  Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
+Let's start off by designing a simple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with other items you bought at the same time so you can go on your grand adventure.
 
-First we will take a look at the class file.
+### **`Think our class as a stencil, and paintings of backpacks as the objects`**
+
+![Stenciling backpacks](stencils.png)
+
+The illustration above shows us using our stencil (class) to paint as many pictures of backpacks (objects) as we need.  We can use different colors of paint for each backpack we paint.  They do not need to all be the same, but they will all have the same shape once they are painted.
+
+## Coding a Backpack Class and Objects in Javascript
+
+Let's jump right into looking at the code that defines a backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
 
 ### **`backpackClass.js`**
 
 ``` javascript
 // Define a class to represent a backpack
 class Backpack {
-    constructor(nameTag, contents) {
-      this.nameTag = nameTag;
-      if (typeof contents === 'object') {
-        this.mainContents = contents;  // If already an object, simply assign it
-      } else if (typeof contents === 'string') {
-        this.mainContents = [contents];  // Simple string, create a new array with it
-      } else {
-        this.mainContents = [];  // Unknown type of contents, start with empty backpack
-        console.log(`I have no idea what ${contents} is - chucking it on the ground.`)
-      }
-      console.log(`You now have ${nameTag}'s backpack and put a ${contents} into it.`)
+  constructor(nameTag, contents) {
+    this.nameTag = nameTag;
+    if (typeof contents === 'object') {
+      this.mainContents = contents;  // If already an object, simply assign it
+    } else if (typeof contents === 'string') {
+      this.mainContents = [contents];  // Simple string, create a new array
+    } else {
+      this.mainContents = [];  // Unknown type, start with an empty backpack
+      console.log(`I have no idea what ${contents} is - chucking it out.`);
     }
+    console.log(`You have ${nameTag}'s backpack with ${contents} in it.`);
+  }
 
-    // Getter methods
-    readNameTag() {
-      console.log(`This backpack belongs to ${this.nameTag}.`);
-    }
+  // Getter methods
+  readNameTag() {
+    console.log(`This backpack belongs to ${this.nameTag}.`);
+  }
 
-    lookInMainCompartment() {
-      if (this.mainContents.length === 0) {
-        console.log(`The main compartment is empty.`);
-      } else {
-        console.log(`The main compartment contains ${this.mainContents}.`);
-      }
+  lookInMainCompartment() {
+    if (this.mainContents.length === 0) {
+      console.log(`The main compartment is empty.`);
+    } else {
+      console.log(`The main compartment contains ${this.mainContents}.`);
     }
+  }
 
-    // Setter methods
-    addItemToMainCompartment(item) {
-      this.mainContents.push(item);
-      console.log(`You have placed a ${item} into ${this.nameTag}'s backpack.`);
-    }
+  // Setter methods
+  addItemToMainCompartment(item) {
+    this.mainContents.push(item);
+    console.log(`You have placed a ${item} into ${this.nameTag}'s backpack.`);
+  }
 
-    removeItemFromMainCompartment(item) {
-      var itemLocationInBag = this.mainContents.indexOf(item);
-      if (itemLocationInBag > -1) { // Did we find our item?
-        this.mainContents.splice(itemLocationInBag, 1);  // Remove the 1 item
-        console.log(`You have removed a ${item} from ${this.nameTag}'s backpack.`);
-      } else {
-        console.log(`Your backpack does not contain ${item}.`);
-      }
+  removeItemFromMainCompartment(item) {
+    var itemLocationInBag = this.mainContents.indexOf(item);
+    if (itemLocationInBag > -1) { // Did we find our item?
+      this.mainContents.splice(itemLocationInBag, 1);  // Remove the 1 item
+      console.log(`You have removed a ${item} from ${this.nameTag}'s backpack.`);
+    } else {
+      console.log(`Your backpack does not contain ${item}.`);
     }
+  }
 
-    empty() {
-      console.log(`You have dumped ${this.mainContents} on the ground.`);
-      this.mainContents = [];
-    }
+  empty() {
+    console.log(`You have dumped ${this.mainContents} on the ground.`);
+    this.mainContents = [];
+  }
 }
 
 // This lets other code use this class to create objects
-module.exports=Backpack
+module.exports = Backpack;
 ```
 
 In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial set of contents.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  The constructor may be given a string or an array of strings, so we need to be sure we set the initial contents appropriately.
@@ -123,7 +131,7 @@ This is what we would see if we run this code with a javascript interpreter like
 
 ``` console
 > node code/simple/object.js
-You now have Jim's backpack and put a tent,socks into it.
+You have Jim's backpack with tent,socks in it.
 This backpack belongs to Jim.
 You have placed a jacket into Jim's backpack.
 The main compartment contains tent,socks,jacket.
@@ -134,6 +142,8 @@ You have dumped tent,jacket on the ground.
 The main compartment is empty.
 >
 ```
+
+![Backpack and contents](backpack_contents.png)
 
 ## Objects Multiplying the Power of Classes
 
@@ -166,8 +176,8 @@ In this example, we are buying (creating) two backpacks and putting different la
 
 ``` console
 > node code/simple/object2.js
-You now have Jim's backpack and put a tent,socks into it.
-You now have Karen's backpack and put a sleeping bag into it.
+You have Jim's backpack with tent,socks in it.
+You have Karen's backpack with sleeping bag in it.
 You have placed a sandwich into Jim's backpack.
 You have placed a binoculars into Karen's backpack.
 This backpack belongs to Jim.
@@ -176,6 +186,8 @@ This backpack belongs to Karen.
 The main compartment contains sleeping bag,binoculars.
 >
 ```
+
+![Brown and Pink backpacks](two_backpacks.png)
 
 ## Building Classes from Classes - Inheritance
 
