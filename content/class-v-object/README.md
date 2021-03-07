@@ -2,11 +2,11 @@
 
 ## TL;DR
 
-> First you write a class to define the desired methods and properties of a concept, then you use that class as an object to set and call those properties and methods.
+> First you write a class to define the desired methods and properties of a concept, then you use that class and create an object to set and call those properties and methods.
 
 ## How Classes and Objects Differ
 
-A class and an object represent the same concepts, but the class is the definition of the concepts you are trying to describe.  The class really only exists as a set of concepts about what something is and how it should operate.  All the properties (adjectives) and methods (verbs) are defined in the class (noun).  A class by itself cannot do anything useful because it is only the definition of a set of concepts.  To do something useful, you need to create an object from that class.
+A class and an object represent the same concepts, but the class is only the definition of the concepts you are trying to describe.  The class really only exists as a set of concepts about what something is and how it should operate.  All the properties (adjectives) and methods (verbs) are defined in the class (noun).  A class by itself cannot do anything useful because it is only the definition of a set of concepts.  To do something useful, you need to create an object from that class.
 
 You may create as many objects from the same class as needed to do actual useful work.  Some or all of the properties may be set when you instantiate (create) the object from your class via its constructor (a special type of method), or you may set more properties later by calling some of its methods (setters).  You may also have your object perform certain functionality by calling other methods which would get information back out of the object (getters).  Let's take a look at a real-world example.
 
@@ -172,8 +172,8 @@ The main compartment contains socks,binoculars.
 
 ![Brown and Pink backpacks](two_backpacks.png)
 
-## Summary Thoughts on Objects and Classes
+## Final Thoughts on Objects and Classes
 
-You should see now that objects are merely the tangible results of a defined class.  Neither is useful without the other.  Next week we will amplify the power of classes by introducing *inheritance* and show how to build classes that can combine other classes to represent more complex ideas.  Perhaps we will create a hiker class that will need this backpack class to take a trip across the forest.  It will have fun methods like walking, sleeping, and picture taking.  But a hiker will still need a backpack and have the need to put things into it and pull them back out.  We don't want to have to write all of that code all over again, so we will use the Backpack class that we have already created without changing it at all.
+You should see now that objects are merely the tangible results of a defined class.  Neither is useful without the other.  Next time we will amplify the power of classes by introducing *inheritance* and show how to build classes that can combine other classes to represent more complex ideas.  Perhaps we will create a hiker class that will need this backpack class to take a trip across the forest.  It will have fun methods like walking, sleeping, and picture taking.  But a hiker will still need a backpack and have the need to put things into it and pull them back out.  We don't want to have to write all of that code all over again, so we will use the Backpack class that we have already created without changing it at all.
 
 If you would like to run this code for yourself, try it out on [repl.it](https://repl.it/@JimBledsoe/Learning-computer-science) or just browse it on [GitHub](https://github.com/JimBledsoe/Learning-computer-science).
