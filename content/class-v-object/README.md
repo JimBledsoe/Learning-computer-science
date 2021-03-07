@@ -10,11 +10,15 @@ A class and an object represent the same concepts, but the class is the definiti
 
 Creating an object from a class is where the fun begins.  You may create as many objects from the same class as you need to do actual useful work.  Some or all of those properties may be set when you instantiate (create) the object from your class via its constructor (a special type of method), or you may be able to set more properties later by calling some of its methods (setters).  You will also be able to have your object perform certain functionality by calling its methods which could let you get information back out of the object (getters).  This may be a lot to take in at first, so let's proceed with a real-world example.
 
-## Create a Usable Class - a Backpack
+## Design a Useful Class - a Backpack
 
-Let's start off by creating a simple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with other items you bought at the same time so you can go on your grand adventure.  Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
+Let's start off by designing a simple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with other items you bought at the same time so you can go on your grand adventure.
 
-First we will take a look at the class file.
+### **`Think our class as a stencil, and paintings of backpacks as the objects`**
+
+![Stenciling backpacks](stencils.png)
+
+Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
 
 ### **`backpackClass.js`**
 
@@ -135,6 +139,8 @@ The main compartment is empty.
 >
 ```
 
+![Backpack and contents](backpack_contents.png)
+
 ## Objects Multiplying the Power of Classes
 
 We mentioned earlier that because objects are what bring classes to life, we do not have to stick to just one object per class.  I don't need to be restricted to having just one backpack, I can buy another one for my wife and they remain totally separate.  I could even buy seven of them if I wanted and put the days of the week on their nameTag.  Let's look at another code sample.
@@ -176,6 +182,8 @@ This backpack belongs to Karen.
 The main compartment contains sleeping bag,binoculars.
 >
 ```
+
+![Brown and Pink backpacks](two_backpacks.png)
 
 ## Building Classes from Classes - Inheritance
 
