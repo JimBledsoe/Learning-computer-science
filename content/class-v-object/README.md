@@ -129,7 +129,7 @@ This is what we would see if we run this code with a javascript interpreter like
 
 ``` console
 > node code/simple/object.js
-You now have Jim's backpack and put a tent,socks into it.
+You have Jim's backpack with tent,socks in it.
 This backpack belongs to Jim.
 You have placed a jacket into Jim's backpack.
 The main compartment contains tent,socks,jacket.
@@ -174,8 +174,8 @@ In this example, we are buying (creating) two backpacks and putting different la
 
 ``` console
 > node code/simple/object2.js
-You now have Jim's backpack and put a tent,socks into it.
-You now have Karen's backpack and put a sleeping bag into it.
+You have Jim's backpack with tent,socks in it.
+You have Karen's backpack with sleeping bag in it.
 You have placed a sandwich into Jim's backpack.
 You have placed a binoculars into Karen's backpack.
 This backpack belongs to Jim.
