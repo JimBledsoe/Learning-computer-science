@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "node code/simple/object2.js"
+run = "node content/class-v-object/object.js"
