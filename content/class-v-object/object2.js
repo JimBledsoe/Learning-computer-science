@@ -1,7 +1,7 @@
 // Load up our class definition for a backpack
 const Backpack = require('./backpackClass.js');
 
-// Create an instance of backpack for me and my wife
+// Create an instance of backpack for Karen and myself
 let myBackpack = new Backpack("Jim", "tent");
 let herBackpack = new Backpack("Karen", "socks");
 
