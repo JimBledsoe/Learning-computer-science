@@ -18,6 +18,8 @@ Let's start off by designing a simple class that will define the properties and 
 
 ![Stenciling backpacks](stencils.png)
 
+## Coding a Backpack Class and Objects in Javascript
+
 Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
 
 ### **`backpackClass.js`**
@@ -30,12 +32,12 @@ class Backpack {
       if (typeof contents === 'object') {
         this.mainContents = contents;  // If already an object, simply assign it
       } else if (typeof contents === 'string') {
-        this.mainContents = [contents];  // Simple string, create a new array with it
+        this.mainContents = [contents];  // Simple string, create a new array
       } else {
-        this.mainContents = [];  // Unknown type of contents, start with empty backpack
-        console.log(`I have no idea what ${contents} is - chucking it on the ground.`)
+        this.mainContents = [];  // Unknown type, start with an empty backpack
+        console.log(`I have no idea what ${contents} is - chucking it out.`);
       }
-      console.log(`You now have ${nameTag}'s backpack and put a ${contents} into it.`)
+      console.log(`You have ${nameTag}'s backpack with ${contents} in it.`);
     }
 
     // Getter methods
@@ -74,7 +76,7 @@ class Backpack {
 }
 
 // This lets other code use this class to create objects
-module.exports=Backpack
+module.exports = Backpack;
 ```
 
 In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial set of contents.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  The constructor may be given a string or an array of strings, so we need to be sure we set the initial contents appropriately.
