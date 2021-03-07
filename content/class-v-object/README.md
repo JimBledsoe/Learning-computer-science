@@ -18,9 +18,11 @@ Let's start off by designing a simple class that will define the properties and 
 
 ![Stenciling backpacks](stencils.png)
 
+The illustration above shows us using our stencil (class) to paint as many pictures of backpacks (objects) as we need.  We can use different colors of paint for each backpack we paint.  They do not need to all be the same, but they will all have the same shape once they are painted.
+
 ## Coding a Backpack Class and Objects in Javascript
 
-Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
+Let's jump right into looking at the code that defines a backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
 
 ### **`backpackClass.js`**
 
