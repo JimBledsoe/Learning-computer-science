@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "node code/simple/object.js"
+run = "node code/simple/object2.js"
