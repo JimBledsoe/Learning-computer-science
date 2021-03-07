@@ -22,7 +22,7 @@ The illustration above shows us using our stencil (class) to paint as many pictu
 
 ## Coding a Backpack Class and Objects in Javascript
 
-Let's jump right into looking at the code that defines a backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
+Let's jump right into looking at some code that defines a backpack class.  We are using javascript for this example.
 
 ### **`backpackClass.js`**
 
@@ -70,7 +70,7 @@ class Backpack {
 module.exports = Backpack;
 ```
 
-In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial item to put into the backpack.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  This simple example can only accept one item when creating the object, but we could expand on that later to accept a string or a list of strings to make the constructor much more powerful.
+We have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial item to put into the backpack.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  This simple example can only accept one item when creating the object, but we could expand on that later to accept a string or a list of strings to make the constructor much more powerful.
 
 The next few lines are all the methods we are defining for this class.  You can think of these as verbs.  They take some action on the class, usually setting or getting properties of the class.  The first two are simply getting the nameTag or contents of the backpack and displaying them.  The next three are modifying the contents - either adding or removing items from the mainCompartment of the backpack.  Adding items is simple - just add more elements to the array of contents.  Removing items is more complicated because we have to find the item first, and remove it only if it is already in the backpack.  Emptying the backpack is simplest of all - just remove all the contents.
 
@@ -174,6 +174,6 @@ The main compartment contains socks,binoculars.
 
 ## Summary Thoughts on Objects and Classes
 
-I hope you now have a pretty clear understanding of what the difference between a class and an object is.  If you embrace classes and use them to organize your code, you will be able to reuse much of your code and reduce your effort of development.
+I hope you now have a pretty clear understanding of what the difference between a class and an object is.  Next week we will amplify the power of classes by introducing *inheritance* and show how to build classes that can combine other classes to represent more complex ideas.  Perhaps we will create a hiker class that will need this backpack class to take a trip across the forest.
 
 If you would like to run this code for yourself, try it out on [repl.it](https://repl.it/@JimBledsoe/Learning-computer-science) or just browse it on [GitHub](https://github.com/JimBledsoe/Learning-computer-science).
