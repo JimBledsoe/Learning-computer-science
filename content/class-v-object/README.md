@@ -2,17 +2,17 @@
 
 ## TLDR
 
-You write a class to define the desired methods and properties, then use that class as an object to set and call those properties and methods.
+First you write a class to define the desired methods and properties, then use that class as an object to set and call those properties and methods.
 
 ## A Little More Detail
 
 A class and an object represent the same concepts, but the class is the definition of the concepts you are trying to describe.  The class really only exists as a set of concepts about what something is and how it should operate.  All the properties (adjectives) and methods (verbs) are defined in the class (noun).  A class by itself cannot do anything useful becasue it is only the definition of a set of concepts.  To do something useful, you need to create an object from that class.
 
-Creating an object from a class is where the real work takes place.  You may create as many objects from the same class as you need to do actual useful work.  When you create the class, you will set some or all of the properties.  Some or all of those properties may be set when you instantiate (create) the object from your class via its constructor (a special type of method), or you may be able to set more properties later by calling some of its methods (setters).  You will also be able to have your object perform certain functionality by calling its methods which could be methods that let you get information back out of the object (getters).  This may be a lot to take in at first, so lets proceed with some real-world examples.
+Creating an object from a class is where the fun begins.  You may create as many objects from the same class as you need to do actual useful work.  Some or all of those properties may be set when you instantiate (create) the object from your class via its constructor (a special type of method), or you may be able to set more properties later by calling some of its methods (setters).  You will also be able to have your object perform certain functionality by calling its methods which could let you get information back out of the object (getters).  This may be a lot to take in at first, so let's proceed with a real-world example.
 
 ## Create a Usable Class - a Backpack
 
-Let's start off by creating a sinmple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with items so you can go on your grand adventure.  Lets jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this simple example.
+Let's start off by creating a simple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with other items you bought at the same time so you can go on your grand adventure.  Let's jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this simple example.
 
 First we will take a look at the class file.
 
@@ -73,9 +73,9 @@ class Backpack {
 module.exports=Backpack
 ```
 
-In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name, and an initial set of contents.  It will store these values in properties, accessed from the class by the keyword 'this'.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  The constructor may be given a string or an array of strings, so we need to be sure we set the initial contents appropriately.
+In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial set of contents.  It will store these values in properties, accessed from the class by the keyword 'this'.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  The constructor may be given a string or an array of strings, so we need to be sure we set the initial contents appropriately.
 
-The next few lines are all the methods we are defining for this class.  You can think of these as verbs.  They take some action on the class, usually setting or getting properties of the class.  The first two are simply getting the nameTag or contents of the backpack and dispplaying them.  The next three are modifying the contents - either adding or removing items from the mainCompartment of the backpack.  Adding items is simple - just add more elements to the array of contents.  Removing items is more complicated, because we have to find the item first, and remove it only if it is already in the backpack.  Emptying the backpack is simplest of all - just remove all the contents.
+The next few lines are all the methods we are defining for this class.  You can think of these as verbs.  They take some action on the class, usually setting or getting properties of the class.  The first two are simply getting the nameTag or contents of the backpack and dispplaying them.  The next three are modifying the contents - either adding or removing items from the mainCompartment of the backpack.  Adding items is simple - just add more elements to the array of contents.  Removing items is more complicated because we have to find the item first, and remove it only if it is already in the backpack.  Emptying the backpack is simplest of all -just remove all the contents.
 
 ## Create an Object with the Backpack Class - myBackpack
 
@@ -117,7 +117,7 @@ But we can successfully remove the socks we put in the backpack when we created 
 
 Finally we empty the backpack, and inspect the main compartment and see that it is indeed empty.
 
-This is what we woudl see if we run this code with a javascript interpreter like Node.js.
+This is what we would see if we run this code with a javascript interpreter like Node.js.
 
 ### **`Console output from Node.js`**
 
