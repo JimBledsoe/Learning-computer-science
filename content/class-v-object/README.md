@@ -14,7 +14,9 @@ Creating an object from a class is where the real work takes place.  You may cre
 
 Let's start off by creating a sinmple class that will define the properties and methods of a backpack and exercise it a little bit.  What do you do with a backpack?  Well, when you buy it, you might want to write your name on it or have it embroidered with your name so you can identify it among a group of other backpacks that might be that same make, model, and color.  The second thing you are likely to do is to pack it with items so you can go on your grand adventure.  Lets jump right into looking at the code that defines the backpack class and another file that creates objects based on this class.  We will write in javascript for this simple example.
 
-First we will take a look at the class file - backpackClass.js
+First we will take a look at the class file.
+
+### **`backpackClass.js`**
 
 ``` javascript
 // Define a class to represent a backpack
@@ -79,6 +81,8 @@ The next few lines are all the methods we are defining for this class.  You can 
 
 Now that we have our class defined, we need to be able to use this class in a useful way.  The following code will create an object from our class so we can manipulate and examine it.
 
+### **`object.js`**
+
 ``` javascript
 // Load up our class definition for a backpack
 const Backpack = require('./backpackClass.js');
@@ -115,8 +119,10 @@ Finally we empty the backpack, and inspect the main compartment and see that it 
 
 This is what we woudl see if we run this code with a javascript interpreter like Node.js.
 
+### **`Console output from Node.js`**
+
 ``` console
- node code/simple/object.js
+> node code/simple/object.js
 You now have Jim's backpack and put a tent,socks into it.
 This backpack belongs to Jim.
 You have placed a jacket into Jim's backpack.
@@ -126,7 +132,7 @@ You have removed a socks from Jim's backpack.
 The main compartment contains tent,jacket.
 You have dumped tent,jacket on the ground.
 The main compartment is empty.
-
+>
 ```
 
 ## The Power of Objects
