@@ -6,3 +6,4 @@ There are two files in this repository:
 
 - backpackClass.js - Defines a backpack class with a few properties and methods
 - object.js - imports and creates an actual backpack from the class
+- object2.js - creates two independent backpacks and shows they are unique
