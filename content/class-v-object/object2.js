@@ -2,8 +2,8 @@
 const Backpack = require('./backpackClass.js');
 
 // Create an instance of backpack for me and my wife
-let myBackpack = new Backpack("Jim", ["tent", "socks"]);
-let herBackpack = new Backpack("Karen", "sleeping bag");
+let myBackpack = new Backpack("Jim", "tent");
+let herBackpack = new Backpack("Karen", "socks");
 
 // Now let's put food in mine and binoculars in hers
 myBackpack.addItemToMainCompartment("sandwich");
