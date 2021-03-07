@@ -22,7 +22,7 @@ The illustration above shows us using our stencil (class) to paint as many pictu
 
 ## Coding a Backpack Class and Objects in Javascript
 
-Let's jump right into looking at some code that defines a backpack class.  We are using javascript for this example.
+Let's jump right into looking at the code that defines a backpack class and another file that creates objects based on this class.  We will write in javascript for this example.
 
 ### **`backpackClass.js`**
 
@@ -31,7 +31,14 @@ Let's jump right into looking at some code that defines a backpack class.  We ar
 class Backpack {
   constructor(nameTag, contents) {
     this.nameTag = nameTag;
-    this.mainContents = [contents];
+    if (typeof contents === 'object') {
+      this.mainContents = contents;  // If already an object, simply assign it
+    } else if (typeof contents === 'string') {
+      this.mainContents = [contents];  // Simple string, create a new array
+    } else {
+      this.mainContents = [];  // Unknown type, start with an empty backpack
+      console.log(`I have no idea what ${contents} is - chucking it out.`);
+    }
     console.log(`You have ${nameTag}'s backpack with ${contents} in it.`);
   }
 
@@ -41,20 +48,24 @@ class Backpack {
   }
 
   lookInMainCompartment() {
-    console.log(`The main compartment contains ${this.mainContents}.`);
+    if (this.mainContents.length === 0) {
+      console.log(`The main compartment is empty.`);
+    } else {
+      console.log(`The main compartment contains ${this.mainContents}.`);
+    }
   }
 
   // Setter methods
   addItemToMainCompartment(item) {
     this.mainContents.push(item);
-    console.log(`You have placed ${item} into ${this.nameTag}'s backpack.`);
+    console.log(`You have placed a ${item} into ${this.nameTag}'s backpack.`);
   }
 
   removeItemFromMainCompartment(item) {
     var itemLocationInBag = this.mainContents.indexOf(item);
     if (itemLocationInBag > -1) { // Did we find our item?
       this.mainContents.splice(itemLocationInBag, 1);  // Remove the 1 item
-      console.log(`You have removed ${item} from ${this.nameTag}'s backpack.`);
+      console.log(`You have removed a ${item} from ${this.nameTag}'s backpack.`);
     } else {
       console.log(`Your backpack does not contain ${item}.`);
     }
@@ -70,7 +81,7 @@ class Backpack {
 module.exports = Backpack;
 ```
 
-We have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial item to put into the backpack.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  This simple example can only accept one item when creating the object, but we could expand on that later to accept a string or a list of strings to make the constructor much more powerful.
+In this code we have started out by creating the class and giving it a name of Backpack.  That will be important when we want to make this class available to other javascript code that wants to create objects from this class.  The first method is the constructor, and it will want us to give the backpack a name and an initial set of contents.  It will store these values in properties, accessed from the class by the keyword *this*.  The nameTag is set as a simple string, whereas the contents are set as an array, because a backpack can hold many different items as its contents.  The constructor may be given a string or an array of strings, so we need to be sure we set the initial contents appropriately.
 
 The next few lines are all the methods we are defining for this class.  You can think of these as verbs.  They take some action on the class, usually setting or getting properties of the class.  The first two are simply getting the nameTag or contents of the backpack and displaying them.  The next three are modifying the contents - either adding or removing items from the mainCompartment of the backpack.  Adding items is simple - just add more elements to the array of contents.  Removing items is more complicated because we have to find the item first, and remove it only if it is already in the backpack.  Emptying the backpack is simplest of all - just remove all the contents.
 
@@ -85,27 +96,32 @@ Now that we have our class defined, we need to be able to use this class in a us
 const Backpack = require('./backpackClass.js');
 
 // Create an instance of backpack for me and make sure its mine
-let myBackpack = new Backpack("Jim", "tent");
+let myBackpack = new Backpack("Jim", ["tent", "socks"]);
 myBackpack.readNameTag();
 
-// Now lets put a jacket & socks inside and inspect the contents
+// Now lets put a jacket inside and verify it is in there
 myBackpack.addItemToMainCompartment("jacket");
-myBackpack.addItemToMainCompartment("socks");
-myBackpack.lookInMainCompartment();  // There should be 3 items now
+myBackpack.lookInMainCompartment();  // There should be a jacket in there
 
 // What happens if we try to remove something not in the backpack?
 myBackpack.removeItemFromMainCompartment("stove");  // There is no stove
+
+// Lets add some socks and inspect it again
+myBackpack.removeItemFromMainCompartment("socks");
+myBackpack.lookInMainCompartment();  // Can you see the socks?
 
 // Lets empty the backpack and make sure it is empty
 myBackpack.empty();
 myBackpack.lookInMainCompartment();  // Should be empty now
 ```
 
-The code starts out by loading the class from the class file and assigning it to an object class of Backpack.  It is still not an object yet, it is still just a class definition.  The next line is where the magic happens.  We are creating an object (myBackpack) from the class (Backpack).  When we create our new object, we are passing it parameters that it is expecting to be a nameTag and a single item.  At this point we can inspect the nameTag to be sure it is our backpack (Jim's).
+The code starts out by loading the class from the class file and assigning it to an object class of Backpack.  It is still not an object yet, it is still just a class definition.  The next line is where the magic happens.  We are creating an object (myBackpack) from the class (Backpack).  When we create our new object, we are passing it parameters that it is expecting to be a nameTag and a list of contents or a single item.  At this point we can inspect the nameTag to be sure it is our backpack (Jim's).
 
-Next, we will add a jacket and socks into the backpack and make sure the contents include the item we put into it when we created it (a tent), along with these two new items.
+Next, we will add a jacket into the backpack and make sure the contents include the items we put into it when we created it (a tent and socks), and the new item (a jacket).
 
 Our next operation is to try to remove something that does not exist in the backpack yet (stove) and it tells us we do not have a stove in the backpack.
+
+But we can successfully remove the socks we put in the backpack when we created it, and verify that only the tent and jacket are still inside.
 
 Finally we empty the backpack, and inspect the main compartment and see that it is indeed empty.
 
@@ -115,14 +131,15 @@ This is what we would see if we run this code with a javascript interpreter like
 
 ``` console
 > node code/simple/object.js
-You have Jim's backpack with tent in it.
+You have Jim's backpack with tent,socks in it.
 This backpack belongs to Jim.
-You have placed jacket into Jim's backpack.
-You have placed socks into Jim's backpack.
-The main compartment contains tent,jacket,socks.
+You have placed a jacket into Jim's backpack.
+The main compartment contains tent,socks,jacket.
 Your backpack does not contain stove.
-You have dumped tent,jacket,socks on the ground.
-The main compartment contains .
+You have removed a socks from Jim's backpack.
+The main compartment contains tent,jacket.
+You have dumped tent,jacket on the ground.
+The main compartment is empty.
 >
 ```
 
@@ -139,8 +156,8 @@ We mentioned earlier that because objects are what bring classes to life, we do 
 const Backpack = require('./backpackClass.js');
 
 // Create an instance of backpack for me and my wife
-let myBackpack = new Backpack("Jim", "tent");
-let herBackpack = new Backpack("Karen", "socks");
+let myBackpack = new Backpack("Jim", ["tent", "socks"]);
+let herBackpack = new Backpack("Karen", "sleeping bag");
 
 // Now let's put food in mine and binoculars in hers
 myBackpack.addItemToMainCompartment("sandwich");
@@ -159,21 +176,29 @@ In this example, we are buying (creating) two backpacks and putting different la
 
 ``` console
 > node code/simple/object2.js
-You have Jim's backpack with tent in it.
-You have Karen's backpack with socks in it.
-You have placed sandwich into Jim's backpack.
-You have placed binoculars into Karen's backpack.
+You have Jim's backpack with tent,socks in it.
+You have Karen's backpack with sleeping bag in it.
+You have placed a sandwich into Jim's backpack.
+You have placed a binoculars into Karen's backpack.
 This backpack belongs to Jim.
-The main compartment contains tent,sandwich.
+The main compartment contains tent,socks,sandwich.
 This backpack belongs to Karen.
-The main compartment contains socks,binoculars.
+The main compartment contains sleeping bag,binoculars.
 >
 ```
 
 ![Brown and Pink backpacks](two_backpacks.png)
 
+## Building Classes from Classes - Inheritance
+
+We have seen that classes are useful for defining the properties and methods of a concept we wish to convey, and we can use that same class to do many different things with them... as long as all of those things are things you can do with a backpack.
+
+But there is another useful concept related to classes - inheritance.  What if we wanted to create a class called hiker.  A hiker has a backpack, but also has shoes and clothes, and maybe a hat.  You can't put things in or remove things from a hiker (legally, at least) but you can make a hiker walk, or sit, or sleep.  But a hiker needs a backpack and that backpack still needs to do all the things a normal backpack can do.  You must now write a new hiker class, but will you need to copy all the properties and methods you already created for the backpack to be part of the hiker?  No, and this is where inheritance helps you out.
+
+Inheritance is when you take and existing class, and *extend* its methods and properties to a new class.  This new class is sometimes called the *parent* class, and it is said to *inherit* all the properties and methods of the original *child* class.  If you create a hiker class that inherits from a backpack class, you will code new properties for hat, shoes, and clothes and code new methods for sit, walk, and sleep.  But the methods that relate to the backpack you now *inherit* form the backpack class for free!
+
 ## Summary Thoughts on Objects and Classes
 
-I hope you now have a pretty clear understanding of what the difference between a class and an object is.  Next week we will amplify the power of classes by introducing *inheritance* and show how to build classes that can combine other classes to represent more complex ideas.  Perhaps we will create a hiker class that will need this backpack class to take a trip across the forest.
+I hope you now have a pretty clear understanding of what the difference between a class and an object is.  If you embrace classes and use them to organize your code, you will be able to reuse much of your code and reduce your effort of development.
 
 If you would like to run this code for yourself, try it out on [repl.it](https://repl.it/@JimBledsoe/Learning-computer-science) or just browse it on [GitHub](https://github.com/JimBledsoe/Learning-computer-science).
