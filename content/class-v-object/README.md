@@ -184,3 +184,9 @@ We have seen that classes are useful for defining the properties and methods of 
 But there is another useful concept related to classes - inheritance.  What if we wanted to create a class called hiker.  A hiker has a backpack, but also has shoes and clothes, and maybe a hat.  You can't put things in or remove things from a hiker (legally, at least) but you can make a hiker walk, or sit, or sleep.  But a hiker needs a backpack and that backpack still needs to do all the things a normal backpack can do.  You must now write a new hiker class, but will you need to copy all the properties and methods you already created for the backpack to be part of the hiker?  No, and this is where inheritance helps you out.
 
 Inheritance is when you take and existing class, and *extend* its methods and properties to a new class.  This new class is sometimes called the *parent* class, and it is said to *inherit* all the properties and methods of the original *child* class.  If you create a hiker class that inherits from a backpack class, you will code new properties for hat, shoes, and clothes and code new methods for sit, walk, and sleep.  But the methods that relate to the backpack you now *inherit* form the backpack class for free!
+
+## Summary Thoughts on Objects and Classes
+
+I hope you now have a pretty clear understanding of what the difference between a class and an object is.  If you embrace classes and use them to organize your code, you will be able to reuse much of your code and reduce your effort of development.
+
+If you would like to run this code for yourself, try it out on [repl.it](https://repl.it/@JimBledsoe/Learning-computer-science) or just browse it on [GitHub](https://github.com/JimBledsoe/Learning-computer-science).
